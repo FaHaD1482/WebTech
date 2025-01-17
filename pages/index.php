@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travello Anywhere</title>
-    <link rel="stylesheet" href="Styles/home.css">
+    <link rel="stylesheet" href="assets/css/home.css">
 </head>
 <body>
     <header>
-        <img src="images/logo.png" alt="Site Logo" width="120px">
+        <img src="assets/Images/logo.png" alt="Site Logo" width="120px">
         <nav class="navbar">
             <ul>
                 <li><a href="" class="menu-items">Home</a></li>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div id="right-container">
-            <img src="Images/hero image.jpeg" alt="Travel Image" width="650px" id="hero-img">
+            <img src="assets/Images/hero image.jpeg" alt="Travel Image" width="650px" id="hero-img">
         </div>
     </section>
 </body>
