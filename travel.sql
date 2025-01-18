@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 16, 2025 at 04:51 PM
+-- Generation Time: Jan 18, 2025 at 01:16 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -161,9 +161,18 @@ CREATE TABLE `users` (
   `phone` varchar(20) DEFAULT NULL,
   `address` text DEFAULT NULL,
   `profile_picture` varchar(255) DEFAULT NULL,
-  `role` enum('admin','client') DEFAULT 'client',
+  `role` enum('admin','user') DEFAULT 'user',
+  `is_validated` tinyint(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `name`, `email`, `password`, `phone`, `address`, `profile_picture`, `role`, `is_validated`, `created_at`) VALUES
+(12, 'Emon', 'emon@gmail.com', '$2y$10$5IpR7teY0kb7/hd0TGo96.6dLNvJe46ityDQYOsklpCLtLTTBZIiO', '01712445348', 'Someshere in Dhaka, Bangladesh', 'assets/Images/profiles/1737190530_3.jpg', 'user', 1, '2025-01-18 08:55:30'),
+(13, 'Fahad', 'fahad123@gmail.com', '$2y$10$yXB6CRaz9/HiKqzzaRuu0ul6AdkVrnM1u1iWnhiKLI2sDuMJs4jJu', '01568767649', 'Dhaka, BD', 'assets/Images/profiles/1737190754_BlackPanther.jpg', 'admin', 1, '2025-01-18 08:59:14');
 
 --
 -- Indexes for dumped tables
@@ -292,7 +301,7 @@ ALTER TABLE `travel_packages`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
