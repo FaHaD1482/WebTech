@@ -2,6 +2,17 @@
 session_start();
 include('../config/db.php');
 
+// Check if user is already logged in
+if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'user') {
+        header('Location: ../pages/user-dashboard.php');
+        exit;
+    } elseif ($_SESSION['role'] == 'admin') {
+        header('Location: ../pages/admin-dashboard.php');
+        exit;
+    }
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = $_POST['password'];

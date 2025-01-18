@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
+    if ($_SESSION['role'] == 'user') {
+        header('Location: ../pages/user-dashboard.php');
+        exit;
+    } elseif ($_SESSION['role'] == 'admin') {
+        header('Location: ../pages/admin-dashboard.php');
+        exit;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +40,7 @@
             <button type="submit">Login</button>
             <p>Don't have an account? <a href="signup.php" id="switch-to-signup">Register Now</a></p>
         </form>
+    </div>
 </body>
 
 </html>
