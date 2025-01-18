@@ -15,8 +15,8 @@
                 <li><a href="" class="menu-items">Packages</a></li>
                 <li><a href="" class="menu-items">Resorts</a></li>
                 <li><a href="" class="menu-items">Booking</a></li>
-                <li><a href="login.php" class="login-btn">Login</a></li>
-                <li><a href="signup.php" class="signup-btn">Sign Up</a></li>
+                <li><a href="login.php" class="primary-btn">Login</a></li>
+                <li><a href="signup.php" class="primary-btn">Sign Up</a></li>
             </ul>
         </nav>
     </header>
@@ -29,7 +29,7 @@
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo voluptatum odit, numquam delectus laborum nobis cum distinctio adipisci. Ducimus, commodi dolorem itaque quae distinctio magni consequatur error suscipit explicabo aperiam exercitationem non ex qui vero.
                 </p>
-                <button id="book-btn">Book Now</button>
+                <button class="primary-btn">Book Now</button>
             </div>
         </div>
         <div id="right-container">

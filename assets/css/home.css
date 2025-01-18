@@ -28,7 +28,7 @@ li, a, button{
     color: rgb(249, 154, 29);
 }
 
-.signup-btn, .login-btn{
+/* .signup-btn, .login-btn{
     border: 1px solid rgb(249, 132, 29);
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
@@ -38,7 +38,7 @@ li, a, button{
 
 .signup-btn:hover, .login-btn:hover{
     color: black;
-}
+} */
 
 #hero{
     display: flex;
@@ -78,7 +78,7 @@ li, a, button{
     margin-bottom: 2%;
 }
 
-#book-btn{
+.primary-btn{
     border: 1px solid rgb(249, 132, 29);
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
@@ -86,12 +86,12 @@ li, a, button{
     color: white;
 }
 
-#book-btn:hover{
-    border: 1px solid rgb(249, 132, 29);
+.primary-btn:hover{
+    /* border: 1px solid rgb(249, 132, 29);
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
+    color: white; */
     background-color: rgb(255, 137, 19);
-    color: white;
 }
 
 #right-container{

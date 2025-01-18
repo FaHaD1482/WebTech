@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// Check if the user is already logged in
+if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
+    // Redirect to the appropriate dashboard based on the role
+    if ($_SESSION['role'] == 'user') {
+        header('Location: ../pages/user-dashboard.php'); // Redirect user to user dashboard
+    } elseif ($_SESSION['role'] == 'admin') {
+        header('Location: ../pages/admin-dashboard.php'); // Redirect admin to admin dashboard
+    }
+    exit; // Prevent further execution
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
