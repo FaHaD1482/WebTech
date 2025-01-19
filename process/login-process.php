@@ -5,10 +5,10 @@ include('../config/db.php');
 // Check if user is already logged in
 if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'user') {
-        header('Location: ../pages/user-dashboard.php');
+        header('Location: ../pages/user/user-dashboard.php');
         exit;
     } elseif ($_SESSION['role'] == 'admin') {
-        header('Location: ../pages/admin-dashboard.php');
+        header('Location: ../pages/admin/admin-dashboard.php');
         exit;
     }
 }
@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $user['password'])) {
             // Check admin validation if role is admin
             if ($role == 'admin' && $user['is_validated'] == 0) {
-                echo "<script>alert('Admin account is pending validation.'); window.location.href='../pages/login.php';</script>";
+                echo "<script>alert('Admin account is pending validation.'); window.location.href='../pages/auth/login.php';</script>";
                 exit;
             }
 
@@ -41,15 +41,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // Redirect to the appropriate dashboard
             if ($role == 'user') {
-                header('Location: ../pages/user-dashboard.php');
+                header('Location: ../pages/user/user-dashboard.php');
             } elseif ($role == 'admin') {
-                header('Location: ../pages/admin-dashboard.php');
+                header('Location: ../pages/admin/admin-dashboard.php');
             }
         } else {
-            echo "<script>alert('Invalid email or password.'); window.location.href='../pages/login.php';</script>";
+            echo "<script>alert('Invalid email or password.'); window.location.href='../pages/auth/login.php';</script>";
         }
     } else {
-        echo "<script>alert('Invalid email, password, or role.'); window.location.href='../pages/login.php';</script>";
+        echo "<script>alert('Invalid email, password, or role.'); window.location.href='../pages/auth/login.php';</script>";
     }
 }
 

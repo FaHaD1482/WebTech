@@ -3,7 +3,7 @@ session_start();
 
 // Check if the admin is logged in and has the correct role
 if (!isset($_SESSION['email']) || $_SESSION['role'] !== 'admin') {
-    header('Location: login.php'); // Redirect to login if not authorized
+    header('Location: ../auth/login.php'); // Redirect to login if not authorized
     exit;
 }
 
@@ -19,6 +19,6 @@ echo "Welcome, Admin!";
     <title>Admin Dashboard - Travello Anywhere</title>
 </head>
 <body>
-    <button onclick="window.location.href='../pages/logout.php'">Log Out</button>
+    <button onclick="window.location.href='../auth/logout.php'">Log Out</button>
 </body>
 </html>

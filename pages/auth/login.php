@@ -3,10 +3,10 @@ session_start();
 
 if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'user') {
-        header('Location: ../pages/user-dashboard.php');
+        header('Location: ../user/user-dashboard.php');
         exit;
     } elseif ($_SESSION['role'] == 'admin') {
-        header('Location: ../pages/admin-dashboard.php');
+        header('Location: ../admin/admin-dashboard.php');
         exit;
     }
 }
@@ -24,7 +24,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
 
 <body>
     <div id="form-container">
-        <form id="login-form" method="POST" action="../process/login-process.php">
+        <form id="login-form" method="POST" action="../../process/login-process.php">
             <h2>Login</h2>
             <label for="email">Email</label>
             <input type="email" name="email" required>

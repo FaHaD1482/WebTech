@@ -17,18 +17,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_phone_check_result = mysqli_query($conn, $email_phone_check_query);
 
     if (mysqli_num_rows($email_phone_check_result) > 0) {
-        echo "<script>alert('Email or phone number already exists. Please use a different email or phone number.'); window.location.href='../pages/signup.php';</script>";
+        echo "<script>alert('Email or phone number already exists. Please use a different email or phone number.'); window.location.href='../pages/auth/signup.php';</script>";
         exit;
     }
 
     if (!preg_match("/^[a-zA-Z]+$/", $name)) {
-        echo "<script>alert('Name can only contain letters.'); window.location.href='../pages/signup.php';</script>";
+        echo "<script>alert('Name can only contain letters.'); window.location.href='../pages/auth/signup.php';</script>";
         exit;
     }
 
     // Validate password strength and length
     if (strlen($password) < 8 || !preg_match("/[A-Z]/", $password) || !preg_match("/[a-z]/", $password) || !preg_match("/[0-9]/", $password) || !preg_match("/[\W_]/", $password)) {
-        echo "<script>alert('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.'); window.location.href='../pages/signup.php';</script>";
+        echo "<script>alert('Password must be at least 8 characters long, contain at least one uppercase letter, one lowercase letter, one number, and one special character.'); window.location.href='../pages/auth/signup.php';</script>";
         exit;
     }
 
@@ -51,13 +51,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_query($conn, $sql)) {
         if ($role == 'admin') {
-            echo "<script>alert('Your admin account is pending validation. Please wait for approval.'); window.location.href='../pages/signup.php';</script>";
+            echo "<script>alert('Your admin account is pending validation. Please wait for approval.'); window.location.href='../pages/auth/signup.php';</script>";
         } else {
-            header('Location: ../pages/login.php');
+            header('Location: ../pages/auth/login.php');
         }
     } else {
         error_log("SQL Error: " . mysqli_error($conn));
-        echo "<script>alert('Error saving user data.'); window.location.href='../pages/signup.php';</script>";
+        echo "<script>alert('Error saving user data.'); window.location.href='../pages/auth/signup.php';</script>";
     }
 }
 

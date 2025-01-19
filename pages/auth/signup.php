@@ -5,9 +5,9 @@ session_start();
 if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
     // Redirect to the appropriate dashboard based on the role
     if ($_SESSION['role'] == 'user') {
-        header('Location: ../pages/user-dashboard.php'); // Redirect user to user dashboard
+        header('Location: ../user/user-dashboard.php'); // Redirect user to user dashboard
     } elseif ($_SESSION['role'] == 'admin') {
-        header('Location: ../pages/admin-dashboard.php'); // Redirect admin to admin dashboard
+        header('Location: ../admin/admin-dashboard.php'); // Redirect admin to admin dashboard
     }
     exit; // Prevent further execution
 }
@@ -23,7 +23,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
 </head>
 
 <body>
-    <form action="../process/register-process.php" method="POST" enctype="multipart/form-data">
+    <form action="../../process/register-process.php" method="POST" enctype="multipart/form-data">
         <label for="name">Name</label>
         <input type="text" name="name" id="name" required>
         <br>
