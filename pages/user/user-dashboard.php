@@ -32,7 +32,7 @@
                 <li><a href="resorts.php">Resorts</a></li>
                 <li><a href="transportation.php">Transportation</a></li>
                 <li><a href="settings.php">Profile Setting</a></li>
-                <li><a href="../../auth/logout.php">Logout</a></li>
+                <li><a href="../auth/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>
