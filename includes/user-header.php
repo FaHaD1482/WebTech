@@ -1,39 +1,58 @@
+<?php
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+include($_SERVER['DOCUMENT_ROOT'] . '/travelagency/config/db.php');
+
+$profile_picture = '/travelagency/assets/Images/default-profile.png';
+$user_name = 'User';
+
+if (isset($_SESSION['email'])) {
+    $email = mysqli_real_escape_string($conn, $_SESSION['email']);
+
+    $query = "SELECT name, profile_picture FROM users WHERE email = '$email'";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+        if (!empty($user['profile_picture'])) {
+            $profile_picture = '/travelagency/' . $user['profile_picture'];
+        } else {
+            $profile_picture = $profile_picture;
+        }
+        $user_name = $user['name'];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travello Anywhere</title>
-    <link rel="stylesheet" href="assets/css/home.css">
+    <title>Travello</title>
+    <link rel="stylesheet" href="/travelagency/assets/css/user-header.css">
 </head>
 <body>
-    <header>
-        <img src="assets/Images/logo.png" alt="Site Logo" width="120px">
-        <nav class="navbar">
-            <ul>
-                <li><a href="" class="menu-items">Packages</a></li>
-                <li><a href="" class="menu-items">Resorts</a></li>
-                <li><a href="" class="menu-items">Booking</a></li>
-                <li><a href="pages/auth/login.php" class="primary-btn">Login</a></li>
-                <li><a href="pages/auth/signup.php" class="primary-btn">Sign Up</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <!-- Logo Section -->
+    <div class="logo">
+            <img src="/travelagency/assets/Images/logo.png" alt="Logo">
+        </div>
 
-    <section id="hero">
-        <div id="left-container">
-            <div id="left-content">
-                <h1>Best Destination Around The world</h1>
-                <h4>Travel, Enjoy and Lead a Chilling Life</h4>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo voluptatum odit, numquam delectus laborum nobis cum distinctio adipisci. Ducimus, commodi dolorem itaque quae distinctio magni consequatur error suscipit explicabo aperiam exercitationem non ex qui vero.
-                </p>
-                <button class="primary-btn">Book Now</button>
-            </div>
+        <!-- Navigation Menu -->
+        <nav class="navbar">
+            <a href="/travelagency/pages/user/user-dashboard.php">Packages</a>
+            <a href="/travelagency/pages/user/contact.php">Contact Us</a>
+        </nav>
+
+        <!-- Profile and Logout Section -->
+        <div class="user-info">
+            <a href="/travelagency/pages/user/profile.php">
+                <img src="<?php echo $profile_picture; ?>" alt="User Profile" class="user-profile">
+            </a>
+            <a href="/travelagency/pages/auth/logout.php" class="logout-btn">Log Out</a>
         </div>
-        <div id="right-container">
-            <img src="assets/Images/hero image.jpeg" alt="Travel Image" width="650px" id="hero-img">
-        </div>
-    </section>
+</header>
 </body>
 </html>

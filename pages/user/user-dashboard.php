@@ -7,64 +7,62 @@
     }
 
     include('../../config/db.php');
+    include('../../includes/user-header.php');
 
-    // Fetch packages from the database
     $sql = "SELECT * FROM travel_packages";
     $result = $conn->query($sql);
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
     <link rel="stylesheet" href="../../assets/css/user-dashboard.css">
 </head>
+
 <body>
-    <header>
-        <h1>Welcome to Travello Anywhere</h1>
-        <nav>
-            <ul>
-                <li><a href="user-dashboard.php">Dashboard</a></li>
-                <li><a href="packages.php">Packages</a></li>
-                <li><a href="resorts.php">Resorts</a></li>
-                <li><a href="transportation.php">Transportation</a></li>
-                <li><a href="settings.php">Profile Setting</a></li>
-                <li><a href="../auth/logout.php">Logout</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- Main Content Section -->
+    <!-- Main Content -->
     <main>
-        <h2>Available Packages</h2>
+        <h1>Available Packages</h1>
         <div class="packages-container">
-            <div class="package-image">
-                <img src="../../assets/Images/logo.png" alt="Package Image">
-            </div>
-            <div class="caption">
-                <p class="rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                </p>
-                <p class="title">Package-1</p>
-
-            </div>
+            <?php
+            if ($result && $result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "
+                    <div class='package-card'>
+                        <div class='package-image'>
+                            <img src='../../" . htmlspecialchars($row['package_image']) . "' alt='" . htmlspecialchars($row['name']) . "'>
+                        </div>
+                        <div class='package-details'>
+                            <h3>" . htmlspecialchars($row['name']) . "</h3>
+                            <p>" . htmlspecialchars($row['description']) . "</p>
+                            <p><strong>Price: ৳" . number_format($row['price'], 2) . "</strong></p>
+                            <div class='package-buttons'>
+                                <button onclick=\"window.location.href='package-details.php?id=" . $row['package_id'] . "'\">Details</button>
+                                <button onclick=\"window.location.href='book-package.php?id=" . $row['package_id'] . "'\">Book Now</button>
+                            </div>
+                        </div>
+                    </div>";
+                }
+            } else {
+                echo "<p>No packages available at the moment.</p>";
+            }
+            ?>
         </div>
     </main>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; <?php echo date('Y'); ?> Travello Anywhere. All rights reserved.</p>
-    </footer>
+    <!-- Footer Area -->
+    <?php
+        include '../../includes/footer.php';
+    ?>
 </body>
+
 </html>
 
 <?php
-$conn->close();
+    $conn->close();
 ?>

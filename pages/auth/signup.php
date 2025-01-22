@@ -4,19 +4,18 @@ session_start();
 // Check if the user is already logged in
 if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
     if ($_SESSION['role'] == 'user') {
-        header('Location: ../user/user-dashboard.php'); // Redirect user to user dashboard
+        header('Location: ../user/user-dashboard.php');
         exit;
     } elseif ($_SESSION['role'] == 'admin') {
-        header('Location: ../admin/admin-dashboard.php'); // Redirect admin to admin dashboard
+        header('Location: ../admin/admin-dashboard.php');
         exit;
     }
 }
 
-// Check for success message in the session (from register-process.php)
 $signupSuccess = false;
 if (isset($_SESSION['signup_success']) && $_SESSION['signup_success'] === true) {
     $signupSuccess = true;
-    unset($_SESSION['signup_success']); // Remove the flag after showing the notification
+    unset($_SESSION['signup_success']);
 }
 ?>
 
@@ -36,11 +35,9 @@ if (isset($_SESSION['signup_success']) && $_SESSION['signup_success'] === true) 
             Successfully signed up! Redirecting...
         </div>
         <script>
-            // Show the notification
             const notification = document.getElementById('success-notification');
             notification.classList.add('show');
 
-            // Redirect after 2 seconds
             setTimeout(() => {
                 window.location.href = "login.php";
             }, 2000);
@@ -68,7 +65,7 @@ if (isset($_SESSION['signup_success']) && $_SESSION['signup_success'] === true) 
             <label for="profile_picture">Profile Picture</label>
             <input type="file" name="profile_picture" id="profile_picture" accept="image/*" required>
             <br>
-            <input type="hidden" name="role" value="user"> <!-- Automatically sets role as user -->
+            <input type="hidden" name="role" value="user">
             <button type="submit">Register</button>
             <p>Already have an account? <a href="login.php" id="switch-to-login">Login Here</a></p>
         </form>
