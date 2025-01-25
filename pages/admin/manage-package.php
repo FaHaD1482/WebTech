@@ -138,12 +138,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-package'])) {
                                     <td>{$row['duration_days']}</td>
                                     <td><img src='../../{$row['package_image']}' alt='Package Image' class='package-img'></td>
                                     <td>
-                                        <button onclick='editPackage(" . json_encode($row) . ")'>Edit</button>
+                                   <button class='edit-btn' onclick='editPackage(" . json_encode($row) . ")'>Edit</button>
                                         <form action='' method='GET' style='display:inline;'>
                                             <input type='hidden' name='action' value='delete'>
                                             <input type='hidden' name='id' value='{$row['package_id']}'>
-                                            <button type='submit'>Delete</button>
+                                            <button type='submit' class='delete-btn'>Delete</button>
                                         </form>
+
                                     </td>
                                   </tr>";
                             }
@@ -195,9 +196,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update-package'])) {
                     <input type="file" id="package-image" name="package-image" accept="image/*">
 
                     <div class="form-buttons">
-                        <button type="submit" id="submit-button" name="update-package">Add Package</button>
-                        <button type="button" id="clear-button">Clear Form</button>
-                    </div>
+    <button type="submit" id="submit-button" name="update-package">Add Package</button>
+    <button type="button" id="clear-button" onclick="clearForm()">Clear Form</button>
+</div>
+
                 </form>
             </div>
         </section>

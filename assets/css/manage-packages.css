@@ -94,9 +94,10 @@ button {
     padding: 8px 12px;
     border: none;
     border-radius: 5px;
-    color: white;
+    color: blueviolet;
     cursor: pointer;
     transition: opacity 0.3s;
+   
 }
 
 button.edit-btn {
@@ -106,6 +107,7 @@ button.edit-btn {
 button.delete-btn {
     background-color: #dc3545;
 }
+
 
 button#submit-button {
     background-color: #28a745;

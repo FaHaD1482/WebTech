@@ -1,4 +1,4 @@
-// Validate inputs for trip details
+// trip details data validation
 function validateInputs() {
     const daysInput = document.getElementById("days");
     const peopleInput = document.getElementById("people");
@@ -30,9 +30,9 @@ function updateTotalPrice() {
 
     const { days, people } = validateInputs();
 
-    const costForDays = (basePrice / packageDuration) * days; // Cost for selected days
-    const additionalCost = costForDays * 0.5 * (people - 1); // Additional cost for extra people
-    const totalPrice = costForDays + additionalCost; // Total price calculation
+    const costForDays = (basePrice / packageDuration) * days;
+    const additionalCost = costForDays * 0.5 * (people - 1);
+    const totalPrice = costForDays + additionalCost; 
 
     // Update total price display
     totalPriceElement.textContent = totalPrice.toLocaleString("en-BD", {
@@ -62,9 +62,8 @@ function submitReview() {
             if (xhr.responseText === "ERROR") {
                 alert("Failed to submit the review. Please try again.");
             } else {
-                // Append the new review to the container
                 reviewsContainer.insertAdjacentHTML("afterbegin", xhr.responseText);
-                reviewText.value = ""; // Clear the text area
+                reviewText.value = "";
             }
         } else {
             alert("Error submitting review.");
@@ -75,8 +74,6 @@ function submitReview() {
     xhr.send(params);
 }
 
-// Booking Submission
-// Booking Submission
 function bookPackage() {
     const { days, people } = validateInputs();
     const bankAccount = prompt("Enter your Bank Account Number:");
@@ -101,7 +98,7 @@ function bookPackage() {
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onload = function () {
         if (xhr.status === 200 && xhr.responseText.trim() === "VALID") {
-            // Insert booking into the database
+
             const bookingXhr = new XMLHttpRequest();
             bookingXhr.open("POST", "../../process/insert-booking.php", true);
             bookingXhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -124,7 +121,6 @@ function bookPackage() {
     xhr.send(paymentData);
 }
 
-// Attach event listeners when DOM is ready
 document.addEventListener("DOMContentLoaded", function () {
     const daysInput = document.getElementById("days");
     const peopleInput = document.getElementById("people");
