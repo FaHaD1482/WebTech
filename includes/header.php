@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travello</title>
     <link rel="stylesheet" href="assets/css/headerstyle.css">
+    <link rel="shortcut icon" href="assets/Images/siteicon.ico" type="image/x-icon">
 </head>
 
 <body>

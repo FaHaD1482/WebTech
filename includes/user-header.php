@@ -32,6 +32,7 @@ if (isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travello</title>
     <link rel="stylesheet" href="/travelagency/assets/css/user-header.css">
+    <link rel="shortcut icon" href="assets/Images/siteicon.ico" type="image/x-icon">
 </head>
 <body>
 <header>

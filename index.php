@@ -18,7 +18,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
 <head>
     <link rel="stylesheet" href="assets/css/home.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
+    <link rel="shortcut icon" href="assets/Images/siteicon.ico" type="image/x-icon">
 </head>
 
 <body>
