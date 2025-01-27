@@ -20,6 +20,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['role'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travello Anywhere</title>
     <link rel="stylesheet" href="../../assets/css/login.css">
+    <link rel="shortcut icon" href="../../assets/Images/siteicon.ico" type="image/x-icon">
 </head>
 
 <body>
