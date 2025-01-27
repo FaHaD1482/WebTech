@@ -86,7 +86,7 @@ function bookPackage() {
 
     const totalPriceElement = document.getElementById("total-price");
     const totalPrice = parseFloat(
-        totalPriceElement.textContent.replace(/[^\d.-]/g, "") // Remove currency symbols and format
+        totalPriceElement.textContent.replace(/[^\d.-]/g, "")
     );
 
     const endDate = new Date();
